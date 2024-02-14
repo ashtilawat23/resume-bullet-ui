@@ -11,7 +11,9 @@ To set up this project locally, follow these steps:
     npm i
     ```
 
-2. Start the development server by running:
+2. Create a `.env` file based on the `.env.sample` file and add your API key.
+
+3. Start the development server by running:
     ```
     npm run dev
     ```
