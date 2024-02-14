@@ -1,8 +1,23 @@
-# React + Vite
+# Resume Bullet Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains a tool called Resume Bullet Generator that leverages GPT-4 to generate resume bullet points aimed at increasing the likelihood of landing an interview.
 
-Currently, two official plugins are available:
+## Local Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To set up this project locally, follow these steps:
+
+1. Install dependencies by running:
+    ```
+    npm i
+    ```
+
+2. Start the development server by running:
+    ```
+    npm run dev
+    ```
+
+## Component Library
+
+This project utilizes Chakra UI as its component library for building user interfaces. Chakra UI offers a set of accessible and customizable components to streamline the development process.
+
+Feel free to explore and contribute to this project to enhance the functionality of the Resume Bullet Generator!
