@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Input,
   Select,
@@ -9,23 +9,54 @@ import {
   VStack
 } from '@chakra-ui/react';
 
-const JobInfo = () => {
+const JobInfo = ({ updateJobInfo }) => {
+  const [jobInfo, setJobInfo] = useState({
+    target_job_title: '',
+    target_company: '',
+    target_industry: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const updatedJobInfo = { ...jobInfo, [name]: value };
+    setJobInfo(updatedJobInfo);
+    updateJobInfo(updatedJobInfo);
+  };
+
   return (
     <Box border="1px" borderColor="gray.200" p={4} borderRadius="md">
       <VStack spacing={4} align="stretch">
         <FormControl isRequired>
           <FormLabel>Target Job Title</FormLabel>
-          <Input size='md' placeholder="Software Engineer" />
+          <Input
+            size='md'
+            placeholder="Software Engineer"
+            name="target_job_title"
+            value={jobInfo.target_job_title}
+            onChange={handleChange}
+          />
         </FormControl>
 
         <FormControl isRequired>
           <FormLabel>Target Company</FormLabel>
-          <Input size='md' placeholder="Google" />
+          <Input
+            size='md'
+            placeholder="Google"
+            name="target_company"
+            value={jobInfo.target_company}
+            onChange={handleChange}
+          />
         </FormControl>
 
         <FormControl isRequired>
           <FormLabel>Target Industry</FormLabel>
-          <Select size='md' placeholder="Select industry">
+          <Select
+            size='md'
+            placeholder="Select industry"
+            name="target_industry"
+            value={jobInfo.target_industry}
+            onChange={handleChange}
+          >
             <option value="Online Retail">Online Retail</option>
             <option value="Consulting">Consulting</option>
             <option value="Engineering">Engineering</option>
