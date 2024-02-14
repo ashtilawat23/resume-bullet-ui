@@ -9,7 +9,7 @@ const customTheme = extendTheme(
       body: {
         fontFamily: `'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif`,
         color: `#0d090d`,
-        backgroundColor: `#f2f2f2`
+        backgroundImage: 'linear-gradient(0deg, #F5F5F5 50%, #93005a 50%)'
       },
     },
   },

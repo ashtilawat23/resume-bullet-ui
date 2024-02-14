@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Image, Heading, Text, VStack, Input, Button, useToast } from '@chakra-ui/react';
+import { Box, Image, Heading, Text, VStack, Input, Button, useToast, Flex } from '@chakra-ui/react';
 import { login } from '../auth/keyphrase';
 import stacked_logo from '../assets/BIT_Logo_Stacked_White.png';
 
@@ -27,14 +27,17 @@ const Login = ({ setIsAuthenticatedState, keyPhrase, setKeyPhrase }) => {
   };
 
   return (
-    <Box textAlign="center" fontSize="xl">
-      <Box p={5}>
-        <Image src={stacked_logo} alt="BIT Logo" mx="auto" />
+    <>
+    <Flex justifyContent="center" position='fixed' top="10%" width="full">
+      <Box boxSize='md'> 
+        <Image src={stacked_logo} alt='BloomTech' />
       </Box>
-      <VStack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
-        <Box rounded={'lg'} boxShadow="lg" p={8}>
-          <Heading as="h2" size="xl" textAlign="center" mb={5}>Custom Outreach Generator</Heading>
-          <Text fontSize="md">By leveraging the capabilities of OpenAI's GPT-3.5 Turbo, the app generates a unique and engaging outreach letter based on the information you provide.</Text>
+    </Flex>
+    <Flex height="100vh" alignItems="center" justifyContent="center">
+      <VStack spacing={10} mx="auto" maxW="lg" py={12} px={6}>
+        <Box borderRadius='md' boxShadow="lg" p={8} backgroundColor='white' >
+          <Heading as="h3" size="xl" textAlign="center" mb={5}>Resume Bullet Generator</Heading>
+          <Text fontSize="sm">This app uses OpenAI's GPT-4 to create custom resume bullets, helping job seekers match their resumes to specific job ads for a better chance at landing interviews.</Text>
           <Box as="form" mt={8} onSubmit={handleLogin}>
             <Input
               variant="filled"
@@ -45,11 +48,12 @@ const Login = ({ setIsAuthenticatedState, keyPhrase, setKeyPhrase }) => {
               value={keyPhrase}
               onChange={handleKeyPhraseChange}
             />
-            <Button width="full" mt={4} type="submit" colorScheme="teal">Login</Button>
+            <Button width="full" mt={4} type="submit" colorScheme="gray">Login</Button>
           </Box>
         </Box>
       </VStack>
-    </Box>
+    </Flex>
+    </>
   );
 };
 

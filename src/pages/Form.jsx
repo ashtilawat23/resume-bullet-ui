@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Button, Flex, VStack, Text, HStack} from '@chakra-ui/react';
-import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
+import { Box, Button, Flex, VStack, Text, HStack, Image} from '@chakra-ui/react';
+import { CheckIcon } from '@chakra-ui/icons';
 import JobInfo from '../components/JobInfo';
 import JobPosting from '../components/JobPosting';
 import Resume from '../components/Resume';
@@ -18,8 +18,12 @@ const Form = () => {
   const isLastStep = activeStep === steps.length - 1;
 
   return (
+    <>
+    <Box boxSize='sm' position='fixed' top={10} left={10}> 
+      <Image src='./src/assets/BIT_Logo_Full_White.png' alt='BloomTech' />
+    </Box>
     <Flex height="100vh" alignItems="center" justifyContent="center">
-      <Box h="80vh" w="80vw" p="10" bg="white" borderRadius="md" boxShadow="lg">
+      <Box h="70vh" w="80vw" p="10" bg="white" borderRadius="md" boxShadow="lg">
         <VStack spacing={10}>
           {/* Step Indicators */}
           <HStack spacing={20}>
@@ -34,7 +38,7 @@ const Form = () => {
           </HStack>
 
           {/* Step Content */}
-          <Box w="full" h='50vh' overflowY='auto'>
+          <Box w="full" h='40vh' overflowY='auto'>
             {steps[activeStep].content}
           </Box>
 
@@ -43,13 +47,14 @@ const Form = () => {
             <Button mr={4} onClick={handlePrevious} isDisabled={activeStep === 0}>
               Previous
             </Button>
-            <Button colorScheme="teal" onClick={handleNext}>
-              {isLastStep ? 'Finish' : 'Next'}
+            <Button colorScheme='gray' onClick={handleNext}>
+              {isLastStep ? 'Submit' : 'Next'}
             </Button>
           </Flex>
         </VStack>
       </Box>
     </Flex>
+    </>
   );
 };
 
