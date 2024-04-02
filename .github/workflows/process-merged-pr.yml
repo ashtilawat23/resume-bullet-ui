@@ -10,12 +10,12 @@ jobs:
     if: github.event.pull_request.merged == true
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3 # Updated to the latest version supporting Node.js 20
       with:
         ref: ${{ github.event.pull_request.merge_commit_sha }}
 
     - name: Set up GitHub CLI
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v3 # Assuming v3 supports Node.js 20; check the actual version
 
     - name: Install GitHub CLI
       run: |
@@ -37,7 +37,8 @@ jobs:
         cat PR_Differences.txt >> Combined.txt
 
     - name: Upload Result as Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3 # Check for a version that supports Node.js 20
       with:
         name: Merged-PR-Details
         path: Combined.txt
+        
