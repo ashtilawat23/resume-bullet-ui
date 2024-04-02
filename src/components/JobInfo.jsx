@@ -24,12 +24,13 @@ const JobInfo = ({ updateJobInfo }) => {
   };
 
   return (
-    <Box border="1px" borderColor="gray.200" p={4} borderRadius="md">
+    <Box p={4} borderRadius="md">
       <VStack spacing={4} align="stretch">
         <FormControl isRequired>
           <FormLabel>Target Job Title</FormLabel>
           <Input
             size='md'
+            variant='outline'
             placeholder="Software Engineer"
             name="target_job_title"
             value={jobInfo.target_job_title}
@@ -41,6 +42,7 @@ const JobInfo = ({ updateJobInfo }) => {
           <FormLabel>Target Company</FormLabel>
           <Input
             size='md'
+            variant='outline'
             placeholder="Google"
             name="target_company"
             value={jobInfo.target_company}
@@ -52,10 +54,12 @@ const JobInfo = ({ updateJobInfo }) => {
           <FormLabel>Target Industry</FormLabel>
           <Select
             size='md'
-            placeholder="Select industry"
+            variant='outline'
+            placeholder="Technology"
             name="target_industry"
             value={jobInfo.target_industry}
             onChange={handleChange}
+            color='gray.500'
           >
             <option value="Online Retail">Online Retail</option>
             <option value="Consulting">Consulting</option>

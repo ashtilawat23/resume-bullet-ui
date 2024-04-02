@@ -1,0 +1,43 @@
+name: PR Merged Actions
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  process-on-merge:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.merge_commit_sha }}
+
+    - name: Set up GitHub CLI
+      uses: actions/setup-go@v2
+
+    - name: Install GitHub CLI
+      run: |
+        sudo apt update && sudo apt install -y gh
+
+    - name: Fetch README
+      run: |
+        gh api repos/${{ github.repository }}/contents/README.md --jq '.content' | base64 --decode > README.md
+        
+    - name: Get PR Differences
+      run: |
+        git diff ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} > PR_Differences.txt
+
+    - name: Combine Files
+      run: |
+        echo "README.md Content:" > Combined.txt
+        cat README.md >> Combined.txt
+        echo "\nPR Differences:" >> Combined.txt
+        cat PR_Differences.txt >> Combined.txt
+
+    - name: Upload Result as Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Merged-PR-Details
+        path: Combined.txt

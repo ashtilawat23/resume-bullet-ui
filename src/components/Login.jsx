@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Image, Heading, Text, VStack, Input, Button, useToast, Flex } from '@chakra-ui/react';
+import { Box, Image, Heading, Text, VStack, Input, Button, useToast, Flex, Card } from '@chakra-ui/react';
 import { login } from '../auth/keyphrase';
 import stacked_logo from '../assets/BIT_Logo_Stacked_White.png';
 
@@ -35,12 +35,13 @@ const Login = ({ setIsAuthenticatedState, keyPhrase, setKeyPhrase }) => {
     </Flex>
     <Flex height="100vh" alignItems="center" justifyContent="center">
       <VStack spacing={10} mx="auto" maxW="lg" py={12} px={6}>
-        <Box borderRadius='md' boxShadow="lg" p={8} backgroundColor='white' >
-          <Heading as="h3" size="xl" textAlign="center" mb={5}>Resume Bullet Generator</Heading>
+        <Card borderRadius='md' boxShadow="lg" p={8}>
+          <Heading as="h3" size="lg" textAlign="center" mb={5}>Resume Bullet Generator</Heading>
           <Text fontSize="sm">This app uses OpenAI's GPT-4 to create custom resume bullets, helping job seekers match their resumes to specific job ads for a better chance at landing interviews.</Text>
           <Box as="form" mt={8} onSubmit={handleLogin}>
             <Input
-              variant="filled"
+              variant='filled'
+              colorScheme='gray'
               mb={3}
               type="text"
               name="password"
@@ -50,7 +51,7 @@ const Login = ({ setIsAuthenticatedState, keyPhrase, setKeyPhrase }) => {
             />
             <Button width="full" mt={4} type="submit" colorScheme="gray">Login</Button>
           </Box>
-        </Box>
+        </Card>
       </VStack>
     </Flex>
     </>
